@@ -16,3 +16,18 @@ The docker version is rarely changed, and can be seen in the Dockerfile.
 
 The docker hub automatic build has `jenkins/jenkins` added as a linked repository.  
 That means whenever a new version of jenkins is released, this image will also be built.
+
+## Usage
+
+Use like the normal jenkins docker image.  
+Mount the docker socket like this: 
+
+```
+-v /var/run/docker.sock:/var/run/docker.sock
+```
+
+You might get permission issues, even after adding `jenkins` (`uid 1000`) as a user on the host,
+and then adding that user to the group `docker` (`gid 497`, might depend on your install).
+
+The dirtiest way to fix this is with `chmod 666 /var/run/docker.sock` on the host.  
+However, now everyone has access to docker. Depending on your environment, that might be an issue.
