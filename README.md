@@ -13,3 +13,6 @@ A symptom for this is warnings in jenkins:
 
 This uses the lts of jenkins, whatever that version is, at the time this image is built.  
 The docker version is rarely changed, and can be seen in the Dockerfile.
+
+The docker hub automatic build has `jenkins/jenkins` added as a linked repository.  
+That means whenever a new version of jenkins is released, this image will also be built.
