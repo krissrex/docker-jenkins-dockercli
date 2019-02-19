@@ -11,4 +11,7 @@ RUN curl -fsSLO https://download.docker.com/linux/static/stable/x86_64/docker-${
   && mv docker/docker /usr/local/bin \
   && rm -r docker docker.tgz
 
+# I use this personally. Fork this repo if you don't need this :p
+RUN apt update && apt install -y rsync
+
 USER jenkins
