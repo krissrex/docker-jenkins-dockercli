@@ -13,5 +13,9 @@ RUN curl -fsSLO https://download.docker.com/linux/static/stable/x86_64/docker-${
 
 # I use this personally. Fork this repo if you don't need this :p
 RUN apt update && apt install -y rsync
+# A trick to run docker-in-docker until AWS ECS supports: `docker run --group-add docker`
+# 497 happens to be my ECS docker gid (`getent group docker`)
+RUN groupadd -g 497 --non-unique --system docker
+RUN usermod -a -G docker jenkins
 
 USER jenkins
